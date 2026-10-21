@@ -1,0 +1,10 @@
+credit_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: CREDIT_DATA
+      schema: RAW
+      threads: 8

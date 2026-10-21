@@ -1,0 +1,21 @@
+name: credit_dbt
+version: 1.0.0
+config-version: 2
+profile: credit_dbt
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+models:
+  staging:
+    +materialized: table
+  analytics:
+    +materialized: table
