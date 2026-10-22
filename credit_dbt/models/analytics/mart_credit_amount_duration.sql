@@ -1,15 +1,15 @@
 WITH segmented AS (
 SELECT
-    CASE amount
-        WHEN < 1000 THEN 'Under 1,000'
-        WHEN < 3000 THEN '1,000-2,999'
-        WHEN < 5000 THEN '3000-4,999'
+    CASE
+        WHEN amount < 1000 THEN 'Under 1,000'
+        WHEN amount < 3000 THEN '1,000-2,999'
+        WHEN amount < 5000 THEN '3000-4,999'
         ELSE '5,000+'
     END AS amount_band,
-    CASE duration
-        WHEN <= 12 THEN '0-12 months'
-        WHEN <= 24 THEN '13-24 months'
-        WHEN <= 36 THEN '25-36 months'
+    CASE
+        WHEN duration <= 12 THEN '0-12 months'
+        WHEN duration <= 24 THEN '13-24 months'
+        WHEN duration <= 36 THEN '25-36 months'
         ELSE '37+ months'
     END AS duration_band,
     amount,

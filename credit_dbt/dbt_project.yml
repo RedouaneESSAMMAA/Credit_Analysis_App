@@ -15,7 +15,10 @@ macro-paths:
 snapshot-paths:
   - snapshots
 models:
-  staging:
-    +materialized: table
-  analytics:
-    +materialized: table
+  credit_dbt:
+    staging:
+      +schema: staging
+      +materialized: table
+    analytics:
+      +schema: analytics
+      +materialized: table

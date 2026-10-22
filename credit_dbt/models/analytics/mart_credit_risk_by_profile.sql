@@ -18,5 +18,4 @@ SELECT
     ROUND(AVG(amount), 2) AS avg_credit_amount,
     ROUND(AVG(duration), 2) AS avg_duration_months
 FROM {{ ref('stg_credit') }}
-WHERE purpose IS NOT NULL
 GROUP BY purpose

@@ -42,9 +42,9 @@ SELECT
         ELSE 'More than 7 yrs'
     END AS employment_duration,
     CASE installment_rate
-        WHEN 'A81' THEN 'Greater than 35'
-        WHEN 'A82' THEN '25 to 35'
-        WHEN 'A83' THEN '20 to 25'
+        WHEN 1 THEN 'Greater than 35'
+        WHEN 2 THEN '25 to 35'
+        WHEN 3 THEN '20 to 25'
         ELSE 'Less than 20'
     END AS installment,
     CASE personal_status_sex
@@ -60,9 +60,9 @@ SELECT
         ELSE 'guarantor'
     END AS other_debtors,
     CASE present_residence
-        WHEN 'A71' THEN 'Less than 1 yr'
-        WHEN 'A72' THEN '1 to 4 yrs'
-        WHEN 'A73' THEN '4 to 7 yrs'
+        WHEN 1 THEN 'Less than 1 yr'
+        WHEN 2 THEN '1 to 4 yrs'
+        WHEN 3 THEN '4 to 7 yrs'
         ELSE 'More than 7 yrs'
     END AS residence_since,
     CASE property
@@ -78,11 +78,11 @@ SELECT
         ELSE 'No further running credits'
     END AS other_installment_plans,
     CASE housing
-        WHEN 'A151' THEN 'rented flat',
+        WHEN 'A151' THEN 'rented flat'
         WHEN 'A152' THEN 'owner-occupied flat'
         ELSE 'Free apartment'
     END AS housing,
-    number_credit,
+    number_credits,
     CASE job
         WHEN 'A171' THEN 'unemployed / unskilled with no permanent residence'
         WHEN 'A172' THEN 'unskilled with permanent residence'
@@ -97,7 +97,7 @@ SELECT
     CASE foreign_worker
         WHEN 'A201' THEN 'Yes'
         ELSE 'No'
-    END AS foreign_worker
+    END AS foreign_worker,
     CASE credit_risk
         WHEN 1 THEN 'low'
         ELSE 'high'
