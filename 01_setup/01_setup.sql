@@ -31,26 +31,26 @@ CREATE STAGE IF NOT EXISTS CREDIT_STAGE
 ------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS raw_data (
-    status      INTEGER,
+    status      VARCHAR,
     duration    INTEGER,
-    credit_history  INTEGER,
-    purpose     INTEGER,
+    credit_history  VARCHAR,
+    purpose     VARCHAR,
     amount      NUMERIC,
-    savings     NUMERIC,
-    employment_duration     INTEGER,
+    savings     VARCHAR,
+    employment_duration     VARCHAR,
     installment_rate        INTEGER,
-    personal_status_sex     INTEGER,
-    other_debtors       INTEGER,
+    personal_status_sex     VARCHAR,
+    other_debtors       VARCHAR,
     present_residence   INTEGER,
-    property        INTEGER,
+    property        VARCHAR,
     age             INTEGER,
-    other_installment_plans     INTEGER,
-    housing     INTEGER,
+    other_installment_plans     VARCHAR,
+    housing     VARCHAR,
     number_credits      INTEGER,
-    job         INTEGER,
+    job         VARCHAR,
     people_liable       INTEGER,
-    telephone       INTEGER,
-    foreign_worker      INTEGER,
+    telephone       VARCHAR,
+    foreign_worker      VARCHAR,
     credit_risk     INTEGER
 );
 
@@ -58,3 +58,4 @@ CREATE TABLE IF NOT EXISTS raw_data (
 COPY INTO RAW.raw_data
 FROM @CREDIT_STAGE;
 
+LIST @CREDIT_STAGE;
