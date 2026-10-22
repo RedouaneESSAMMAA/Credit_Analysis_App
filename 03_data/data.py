@@ -1,9 +1,7 @@
 
-def main(session):
+from snowflake.snowpark.context import get_active_session
 
-    snow_df = (
-        session.table("CREDIT_DATA.RAW.raw_data")
-    )
+session = get_active_session()
 
-    df = snow_df.to_pandas()
-    return df
+data = session.table("CREDIT_DATA.STAGING.STG_CREDIT")
+

@@ -1,0 +1,38 @@
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <i class="fas fa-chart-line"></i>
+        <span>Dashboard</span>
+    </div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+                    <i class="fas fa-home"></i></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="/tables" class="{% if request.path in ['/tables', '/tables/customers'] %}active{% endif %}">
+                    <i class="bi bi-table"></i> Tables
+                </a>
+            </li>
+            <li>
+                <a href="/analysis" class="{% if request.path == '/analysis' %}active{% endif %}">
+                    <i class="fas fa-chart-bar"></i> Analysis
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <button type="button" class="support-btn" id="supportBtn">
+            <i class="bi bi-headset"></i> Support
+        </button>
+
+        <div class="support-panel" id="supportPanel">
+            <h4>Need help?</h4>
+            <p>Contact us if you have any questions.</p>
+            <a style="font-style: italic;font-weight: bold;">essred4@gmail.com</a>
+        </div>
+    </div>
+</aside>
