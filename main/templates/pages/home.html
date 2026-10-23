@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- KPI Cards -->
+    <section class="stats-section">
+        <div class="stat-card">
+            <div class="stat-icon icon-teal">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Total Appliants</h3>
+                <p class="stat-number">{{ global_data['global_data']['total_applicants'] }}</p>
+                <p class="stat-change">Coming Soon...</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-blue">
+                <i class="fa-sharp-duotone fa-thin fa-shield-exclamation"></i>
+            </div>
+            <div class="stat-content">
+                <h3>High-Risk Applicants</h3>
+                <p class="stat-number">{{ global_data['global_data']['high_risk_pct'] }}</p>
+                <p class="stat-change">Coming Soon...</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-pink">
+                <i class="fa-duotone fa-solid fa-wallet"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Average Credit Amount</h3>
+                <p class="stat-number">{{ global_data['global_data']['average_credit_amount'] }}</p>
+                <p class="stat-change">Coming Soon...</p>
+            </div>
+        </div>
+    </section>
+    <section class="stats-section">
+        <div class="stat-card">
+            <div class="stat-icon icon-teal">
+                <i class="fa-solid fa-calendar-clock"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Average Duration</h3>
+                <p class="stat-number">{{ global_data['global_data']['average_duration'] }} months</p>
+                <p class="stat-change">Coming Soon...</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-blue">
+                <i class="fa-solid fa-money-check-dollar"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Total Credit Requested</h3>
+                <p class="stat-number">{{ global_data['global_data']['total_credit'] }}</p>
+                <p class="stat-change">Coming Soon...</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
