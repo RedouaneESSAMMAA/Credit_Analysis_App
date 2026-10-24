@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script defer src="{{ url_for('static', filename='JS/charts.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='JS/customer.js') }}"></script>
+    <!-- <script defer src="{{ url_for('static', filename='JS/customer.js') }}"></script> -->
     <script defer src="{{ url_for('static', filename='JS/support.js') }}"></script>
 </head>
 <body>
@@ -21,12 +21,15 @@
         <!-- Main content -->
         <main class="main-content">
             <!-- Top navbar: navigate between pages -->
-            <nav class="top-navbar">
+            <!-- <nav class="top-navbar">
                 <ul class="top-navbar-list">
                     <li><a href="/" class="top-nav-link {% if request.path == '/' %}active{% endif %}"><i class="fa-solid fa-chart-pie"></i>Overview</a></li>
                     <li><a href="/customers" class="top-nav-link {% if request.path == '/customers' %}active{% endif %}"><i class="bi bi-people-fill"></i> Customers</a></li>
                 </ul>
-            </nav>
+            </nav> -->
+            <div class="dashboard-title">
+                <h1>CREDIT ANALYTICS</h1>
+            </div>
 
             {% block content %}{% endblock %}
         </main>

@@ -13,8 +13,8 @@ def get_session():
         "user": os.getenv("SNOWFLAKE_USER"),
         "password": os.getenv("SNOWFLAKE_PASSWORD"),
         "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
-        "database": os.getenv("SNOWFLAKE_DATABASE", "CREDIT_DATA"),
-        "schema": os.getenv("SNOWFLAKE_SCHEMA", "ANALYTICS"),
+        "database": "CREDIT_DATA",
+        "schema": "ANALYTICS"
     }
 
     role = os.getenv("SNOWFLAKE_ROLE")

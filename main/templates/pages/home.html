@@ -5,55 +5,105 @@
     <section class="stats-section">
         <div class="stat-card">
             <div class="stat-icon icon-teal">
-                <i class="fa-solid fa-users"></i>
+                <span class="kpi-icon blue-icon" aria-label="Applicants" role="img">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3"></circle>
+                        <path d="M3.5 19v-1.5a5.5 5.5 0 0 1 11 0V19z"></path>
+                        <path d="M16 5.5a3 3 0 0 1 0 5.8M18 14a4.5 4.5 0 0 1 2.5 4v1"></path>
+                    </svg>
+                </span>
             </div>
             <div class="stat-content">
                 <h3>Total Appliants</h3>
                 <p class="stat-number">{{ global_data['global_data']['total_applicants'] }}</p>
-                <p class="stat-change">Coming Soon...</p>
+                <p>All record in the dataset</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-green">
+                <span class="kpi-icon green-icon" aria-label="Good credit" role="img">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3 20 6v5.5c0 4.5-3.1 7.8-8 9.5-4.9-1.7-8-5-8-9.5V6l8-3z"></path>
+                    <path d="m8.5 12 2.3 2.3 4.8-4.8"></path>
+                    </svg>
+                </span>
+            </div>
+            <div class="stat-content">
+                <h3>Good Applicants</h3>
+                <p class="stat-number">{{ global_data['global_data']['good_applicants'] }}</p>
+                <p class="mb-0">{{ global_data['global_data']['good_applicants_pct'] }} of applicants</p>
             </div>
         </div>
         <div class="stat-card">
             <div class="stat-icon icon-blue">
-                <i class="fa-sharp-duotone fa-thin fa-shield-exclamation"></i>
+                <span class="kpi-icon amber-icon" aria-label="Higher risk" role="img">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M10.3 4.5 2.8 18a1.5 1.5 0 0 0 1.3 2.2h15.8a1.5 1.5 0 0 0 1.3-2.2L13.7 4.5a2 2 0 0 0-3.4 0z"></path>
+                        <path d="M12 9v4"></path>
+                        <circle cx="12" cy="16.5" r=".6"></circle>
+                    </svg>
+                </span>
             </div>
             <div class="stat-content">
                 <h3>High-Risk Applicants</h3>
-                <p class="stat-number">{{ global_data['global_data']['high_risk_pct'] }}</p>
-                <p class="stat-change">Coming Soon...</p>
+                <p class="stat-number">{{ global_data['global_data']['bad_applicants'] }}</p>
+                <p class="mb-1">{{ global_data['global_data']['bad_applicants_pct'] }} of applicants</p>
             </div>
         </div>
         <div class="stat-card">
-            <div class="stat-icon icon-pink">
-                <i class="fa-duotone fa-solid fa-wallet"></i>
+            <div class="stat-icon icon-navy">
+                <span class="kpi-icon navy-icon" aria-label="Credit amount" role="img">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 9 9-5 9 5"></path>
+                    <path d="M4 10h16"></path>
+                    <path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"></path>
+                    <path d="M3 20h18M4 18h16"></path>
+                    </svg>
+                </span>
             </div>
             <div class="stat-content">
-                <h3>Average Credit Amount</h3>
-                <p class="stat-number">{{ global_data['global_data']['average_credit_amount'] }}</p>
-                <p class="stat-change">Coming Soon...</p>
+                <h3>Avg. Credit Amount</h3>
+                <p class="stat-number">{{ global_data['global_data']['average_credit'] }}</p>
+                <p>Across all applicants</p>
             </div>
         </div>
     </section>
-    <section class="stats-section">
-        <div class="stat-card">
-            <div class="stat-icon icon-teal">
-                <i class="fa-solid fa-calendar-clock"></i>
+    <section class="charts-section">
+        <div class="chart-card">
+            <div class="chart-canvas-wrap">
+                <div id="chart1" class="chart-canvas" style="border-radius: 150px;"></div>
             </div>
-            <div class="stat-content">
-                <h3>Average Duration</h3>
-                <p class="stat-number">{{ global_data['global_data']['average_duration'] }} months</p>
-                <p class="stat-change">Coming Soon...</p>
+            <div class="chart-body">
+                <h2>High Risk Applicants Distribution</h2>
+                <p class="chart-subtitle">Distribution by Age</p>
             </div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon icon-blue">
-                <i class="fa-solid fa-money-check-dollar"></i>
+        <div class="chart-card">
+            <div class="chart-canvas-wrap">
+                <div id="chart2" class="chart-canvas" style="border-radius: 150px;"></div>
             </div>
-            <div class="stat-content">
-                <h3>Total Credit Requested</h3>
-                <p class="stat-number">{{ global_data['global_data']['total_credit'] }}</p>
-                <p class="stat-change">Coming Soon...</p>
+            <div class="chart-body">
+                <h2>Applicants by their Status</h2>
+            </div>
+        </div>
+    </section>
+    <section class="charts-section">
+        <div class="chart-card">
+            <div class="chart-canvas-wrap">
+                <canvas id="donut1" class="chart-canvas" style="border-radius: 150px;"></canvas>
+            </div>
+                <div class="chart-donut-body">
+                <h2>Applicants by loan purpose</h2>
+            </div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-canvas-wrap">
+                
+            </div>
+            <div class="chart-body">
+                
             </div>
         </div>
     </section>
 {% endblock %}
+            

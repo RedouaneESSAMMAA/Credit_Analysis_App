@@ -13,6 +13,9 @@
     --radius: 12px;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --green: #21805a;
+    --amber: #b87516;
+    --navy: #17324d;
 }
 
 
@@ -117,8 +120,9 @@ abbr {
 }
 
 .sidebar-nav a.active {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 100%);
-    color: white;
+    /* background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 100%); */
+    background-color: #2f6f9f;
+    color: #fff;
 }
 
 .sidebar-nav i {
@@ -144,9 +148,9 @@ abbr {
 .support-btn {
     width: 100%;
     padding: 10px;
-    background-color: rgba(245, 8, 122, 0.2);
-    color: var(--pink-light);
-    border: 1px solid var(--pink);
+    background-color: rgba(107, 159, 194, 0.14);
+    color: #a9c9df;
+    border: 1px solid rgba(107, 159, 194, 0.55);
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
@@ -154,8 +158,9 @@ abbr {
 }
 
 .support-btn:hover {
-    background-color: var(--pink);
-    color: white;
+    background-color: #2f6f9f;
+    border-color: #2f6f9f;
+    color: #fff;
 }
 
 /* Support popup */
@@ -356,6 +361,20 @@ abbr {
 }
 
 /* ============ KPI STAT CARDS ============ */
+
+.dashboard-title h1 {
+    color: var(--navy);
+    padding: 0 0 15px;
+}
+
+.mb-0 {
+    color: var(--green);
+}
+
+.mb-1 {
+    color: var(--amber);
+}
+
 .stats-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -379,6 +398,14 @@ abbr {
     box-shadow: var(--shadow-hover);
 }
 
+.blue-icon {
+    color: darkblue;
+}
+
+.green-icon {
+    color: #21805a;
+}
+
 .stat-icon {
     width: 70px;
     height: 70px;
@@ -391,16 +418,24 @@ abbr {
     flex-shrink: 0;
 }
 
-.icon-pink {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 100%);
+.icon-green {
+  background: #e8f4ed;
+  color: var(--green);
 }
 
 .icon-blue {
-    background: linear-gradient(135deg, var(--blue) 0%, #4a70ff 100%);
+    background: #fff3df;
+    color: var(--amber);
 }
 
 .icon-teal {
-    background: linear-gradient(135deg, var(--teal) 0%, #2dd9c8 100%);
+    /* background: linear-gradient(135deg, var(--teal) 0%, #2dd9c8 100%); */
+    background: #eaf2f8;
+}
+
+.icon-navy{
+    background: #eaf0f5;
+    color: var(--navy);
 }
 
 .icon-yellow {
@@ -464,6 +499,11 @@ abbr {
 
 .chart-body {
     padding: 15px 20px 20px;
+}
+
+.chart-donut-body {
+    padding: 15px 20px 20px;
+    margin-top: 20px;
 }
 
 .chart-body h2 {
@@ -940,4 +980,15 @@ abbr {
         flex-wrap: nowrap;
         overflow-x: auto;
     }
+}
+
+/* Kpis icons */
+.kpi-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
