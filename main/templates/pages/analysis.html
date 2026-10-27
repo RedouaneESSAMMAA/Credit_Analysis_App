@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- Category tables -->
+        <section class="table-section">
+            <div class="table-card table-heading">
+                <div>
+                    <h2>Credit Risk by Loan Purpose</h2>
+                </div>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Purpose</th>
+                            <th scope="col">Applicants</th>
+                            <th scope="col">High-risk applicants</th>
+                            <th scope="col">High-risk rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for purpose, count1, count2, pct in zip(global_data['table_data']['purpose_table']['purpose'], global_data['table_data']['purpose_table']['applicants'], global_data['table_data']['purpose_table']['high_risk_applicant'], global_data['table_data']['purpose_table']['high_risk_rate']) %}
+                        <tr>
+                            <td class="purpose">{{ purpose }}</td>
+                            <td class="numbers">{{ count1 }}</td>
+                            <td class="numbers">{{ count2 }}</td>
+                            <td class="rate">{{ "%.1f" % pct }} %</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="table-section">
+            <div class="table-card table-heading">
+                <div>
+                    <h2>Applicants Segmentation Summary</h2>
+                </div>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Segments</th>
+                            <th scope="col">Applicants</th>
+                            <th scope="col">Avg. Loan Amount</th>
+                            <th scope="col">Avg. Duration</th>
+                            <th scope="col">Avg. Age</th>
+                            <th scope="col">High Risk rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set summary = global_data['table_data']['clusters_summary'] %}
+                        {% for segment in summary['segments'] %}
+                            {% set i = loop.index0 %}
+                            <tr>
+                            <td class="segment">{{ segment }}</td>
+                            <td class="numbers">{{ summary['applicants'][i] }}</td>
+                            <td class="numbers">{{ ("{:,.1f}".format(summary['avg_amount'][i])).replace(",", " ") }} $</td>
+                            <td class="numbers">{{ summary['avg_duration'][i] }}</td>
+                            <td class="numbers">{{ summary['avg_age'][i] }}</td>
+                            <td class="rate">{{ "%.1f" | format(summary['high_risk_pct'][i]) }}%</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+{% endblock %}

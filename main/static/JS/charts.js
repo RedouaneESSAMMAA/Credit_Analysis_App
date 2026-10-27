@@ -198,31 +198,90 @@ fetch('/chart_data')
 });
 
 // dougnout chart
+// fetch('/chart_data')
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error(`HTTP error! status: ${response.status}`);
+//             }
+//             return response.json();
+//         })
+//         .then(chartData => {
+//             console.log("Chart data fetched:", chartData);
+
+//             // Get chart4 data
+//             const chart3 = chartData.chart3;
+
+//             // Get the canvas element
+//             const ctx = document.getElementById('donut1').getContext('2d');
+
+//             // Create the chart
+//             new Chart(ctx, {
+//                 type: chart3.type, // 'doughnut'
+//                 data: {
+//                     labels: chart3.labels, // x-axis labels
+//                     datasets: [{
+//                         label: '', // Dataset label
+//                         data: chart3.values, // y-axis values
+//                         backgroundColor: [
+//                             '#184e77',
+//                             '#1e6091',
+//                             '#1a759f',
+//                             '#168aad',
+//                             '#34a0a4',
+//                             '#52b69a',
+//                             '#76c893',
+//                             '#99d98c',
+//                             '#b5e48c',
+//                             '#d9ed92']
+//                     }]
+//                 },
+//                 options: {
+//                     responsive: true,
+//                     maintainAspectRatio: false,
+//                     title: {
+//                       display: false,
+//                     },
+//                     cutout: '65%',
+//                     plugins:{
+//                       legend:{
+//                         position: 'right',
+//                       }
+//                     }
+//                 },
+//                 // plugins:['doughnutShadow', text1] // Attach the shadow plugin
+//             });
+// });
+
+//donut:: :
 fetch('/chart_data')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(chartData => {
-            console.log("Chart data fetched:", chartData);
+  .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(chartData => {
+      console.log("Chart data fetched:", chartData);
 
-            // Get chart4 data
-            const chart3 = chartData.chart3;
+      const chart3 = chartData.chart3;
 
-            // Get the canvas element
-            const ctx = document.getElementById('donut1').getContext('2d');
 
-            // Create the chart
-            new Chart(ctx, {
-                type: chart3.type, // 'doughnut'
-                data: {
-                    labels: chart3.labels, // x-axis labels
-                    datasets: [{
-                        label: '', // Dataset label
-                        data: chart3.values, // y-axis values
-                        backgroundColor: [
+      if (!chart3 || !chart3.labels || !chart3.values) {
+          throw new Error("chart4 is missing labels or values");
+      }
+
+      const options = {
+          series: chart3.values,
+          chart: {
+              type: 'donut',
+              height: 380,
+            //   width: '100%',
+            //   toolbar: {
+            //       show: false
+            //   },
+          },
+          labels: chart3.labels,
+          colors: [
                             '#184e77',
                             '#1e6091',
                             '#1a759f',
@@ -232,24 +291,117 @@ fetch('/chart_data')
                             '#76c893',
                             '#99d98c',
                             '#b5e48c',
-                            '#d9ed92']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    title: {
-                      display: false,
-                    },
-                    cutout: '65%',
-                    plugins:{
-                      legend:{
-                        position: 'right',
-                      }
-                    }
-                },
-                // plugins:['doughnutShadow', text1] // Attach the shadow plugin
-            });
+                            '#d9ed92'],
+          plotOptions: {
+              pie: {
+                  spacing: 3,
+                  borderRadius: 8,
+                  donut: {
+                    size: '60%'
+                  }
+              }
+          },
+          stroke: {
+            width: 0
+          },
+          legend: {
+              position: 'right'
+          },
+      };
+
+      const chart = new ApexCharts(
+          document.querySelector('#donut1'),
+          options
+      );
+
+      chart.render();
+  })
+  .catch(error => {
+      console.error('Error fetching or rendering chart data:', error);
+});
+
+//chart3 :
+fetch('/chart_data')
+  .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(chartData => {
+      console.log("Chart data fetched:", chartData);
+
+      const chart4 = chartData.chart4;
+
+
+      if (!chart4 || !chart4.names || !chart4.labels || !chart4.values) {
+          throw new Error("chart4 is missing labels or values");
+      }
+
+      const options = {
+          series: [
+            {
+              name: chart4.names[0],
+              data: chart4.values.slice(0,4)
+            },
+            {
+              name: chart4.names[1],
+              data: chart4.values.slice(5)
+            }
+        ],
+          chart: {
+              type: 'bar',
+              height: 365,
+              width: '100%',
+              toolbar: {
+                  show: false
+              },
+              stacked: true
+          },
+          plotOptions: {
+              bar: {
+                  columnWidth: '45%',
+                  borderRadius: 5,
+                  horizontal: true,
+              }
+          },
+          dataLabels: {
+              total: {
+                enabled: true,
+                offsetX: 0,
+                style: {
+                    fontSize: '13px',
+                    fontWeight: 900
+                }
+              }
+          },
+          stroke: {
+            width: 1,
+            colors: ["fff"]
+          },
+          xaxis: {
+              categories: chart4.labels,
+          },
+        //   fill: {
+        //       opacity: 1,
+        //       colors: ['#003049']
+        //   }
+          legend: {
+            position: 'top',
+            horizontalAlign: 'left',
+            offsetX: 40
+          }
+      };
+
+      const chart = new ApexCharts(
+          document.querySelector('#chart3'),
+          options
+      );
+
+      chart.render();
+  })
+  .catch(error => {
+      console.error('Error fetching or rendering chart data:', error);
 });
 
 
@@ -378,7 +530,7 @@ function renderRadarChart(profile, chartData) {
 
   if (!container) {
     console.warn(`Container not found: #${profile.elementId}`);
-    return;
+    return Promise.resolve();
   }
 
   if (
@@ -387,13 +539,12 @@ function renderRadarChart(profile, chartData) {
     !Array.isArray(chartData.values)
   ) {
     console.error(`Invalid data for ${profile.dataKey}:`, chartData);
-    return;
+    return Promise.resolve();
   }
 
   // Destroy an existing chart before recreating it
   if (container._apexChart) {
     container._apexChart.destroy();
-    container._apexChart = null;
   }
 
   const options = {
@@ -525,13 +676,14 @@ function renderRadarChart(profile, chartData) {
   const chart = new ApexCharts(container, options);
   container._apexChart = chart;
 
-  chart.render()
-      .then(() => {
-          hideChartLoader(container);
-      })
-      .catch(error => {
-          console.error('Error rendering chart:', error);
-  });
+//   chart.render()
+//       .then(() => {
+//           hideChartLoader(container);
+//       })
+//       .catch(error => {
+//           console.error('Error rendering chart:', error);
+//   });
+    return chart.render();
 }
 
 
@@ -550,16 +702,15 @@ document.querySelectorAll('.analysis-card').forEach(card => {
 ========================================= */
 
 async function initializeRadarCharts() {
-  try {
-    const response = await fetch('/chart_data');
+  const loader = document.getElementById("radars-loader");
 
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
+  try {
+    const response = await fetch("/chart_data");
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
     const chartData = await response.json();
 
-    radarProfiles.forEach(profile => {
+    await Promise.all(radarProfiles.map(async profile => {
       const data = chartData[profile.dataKey];
 
       if (!data) {
@@ -568,12 +719,14 @@ async function initializeRadarCharts() {
       }
 
       addRadarHeading(profile);
-      renderRadarChart(profile, data);
-    });
-
+      await renderRadarChart(profile, data);
+    }));
   } catch (error) {
-    console.error('Error initializing radar charts:', error);
+    console.error("Error initializing radar charts:", error);
+  } finally {
+    if (loader) loader.hidden = true;
   }
 }
 
 initializeRadarCharts();
+

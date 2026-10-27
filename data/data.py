@@ -25,6 +25,27 @@ data2["AGE_CATEGORIES"] = pd.cut(
     right=False
 )
 
+#Purpose Analysis data:
+purpose_analysis = pd.concat(
+    [
+        data2["PURPOSE"].value_counts().rename("APPLICANT_COUNT"),
+        data2[data2["CREDIT_RISK"] == "high"]["PURPOSE"]
+            .value_counts()
+            .rename("HIGH_RISK_APPLICANTS"),
+    ],
+    axis=1
+).fillna(0)
+
+purpose_analysis["HIGH_RISK_RATE"] = (
+    purpose_analysis["HIGH_RISK_APPLICANTS"]
+    / purpose_analysis["APPLICANT_COUNT"]
+    * 100
+).round(1)
+
+purpose_analysis = purpose_analysis.sort_values(
+    "HIGH_RISK_RATE", ascending=False
+)
+
 
 global_data = {
     'global_data' : {
@@ -54,6 +75,11 @@ global_data = {
             'labels': data2.PURPOSE.value_counts().index.tolist(),
             'values': data2.PURPOSE.value_counts().values.tolist()
         },
+        'chart4': {
+            'names': list(dict.fromkeys(data2.groupby("CREDIT_RISK")["PROPERTY"].value_counts().index.get_level_values("CREDIT_RISK").tolist())),
+            'labels': list(dict.fromkeys(data2.groupby("CREDIT_RISK")["PROPERTY"].value_counts().index.get_level_values("PROPERTY").tolist())),
+            'values': data2.groupby("CREDIT_RISK")["PROPERTY"].value_counts().values.tolist()
+        },
         'chart_radar1': {
             'labels': data_radar.columns[1:].tolist(),
             'values': data_radar[data_radar['CLUSTER_ID'] == 1].values[0][1:].tolist()
@@ -73,6 +99,23 @@ global_data = {
         'chart_radar5': {
             'labels': data_radar.columns[1:].tolist(),
             'values': data_radar[data_radar['CLUSTER_ID'] == 5].values[0][1:].tolist()
+        }
+    },
+    'table_data':{
+        'purpose_table': {
+            'purpose': purpose_analysis.index.tolist(),
+            'applicants': purpose_analysis["APPLICANT_COUNT"].tolist(),
+            'high_risk_applicant': purpose_analysis['HIGH_RISK_APPLICANTS'].tolist(),
+            'high_risk_rate': purpose_analysis['HIGH_RISK_RATE'].tolist()
+        },
+        'clusters_summary': {
+            'segments': ['Long-Term, High-Exposure Borrowers', 'Older, Lower-Risk Applicants', 'Established Credit Users', 'Younger, Smaller-Loan Applicants', 'Moderate-Exposure Applicants'],
+            'applicants': data_clusters['APPLICANT_COUNT'].tolist(),
+            'avg_amount': data_clusters['AVG_AMOUNT'].tolist(),
+            'avg_duration': data_clusters['AVG_DURATION'].tolist(),
+            'avg_age': data_clusters['AVG_AGE'].tolist(),
+            'high_risk_pct': data_clusters['HIGH_RISK_PCT'].tolist(),
+
         }
     }
 }
