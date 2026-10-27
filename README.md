@@ -31,7 +31,7 @@ As a data engineer, I designed the project to bring together the main stages of 
 ├── app.py              # Flask application entry point
 ├── requirements.txt    # Python dependencies
 ├── main/              # Dashboard-related files
-├── data/               # Requesting data from motherduck database
+├── data/               # Requesting data from Snowflake database
 └── credit_dbt/        # dbt project
 ```
 
