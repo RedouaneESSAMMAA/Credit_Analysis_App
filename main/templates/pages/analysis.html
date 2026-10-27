@@ -54,7 +54,7 @@
                             <td class="segment">{{ segment }}</td>
                             <td class="numbers">{{ summary['applicants'][i] }}</td>
                             <td class="numbers">{{ ("{:,.1f}".format(summary['avg_amount'][i])).replace(",", " ") }} $</td>
-                            <td class="numbers">{{ summary['avg_duration'][i] }}</td>
+                            <td class="numbers">{{ summary['avg_duration'][i] }} months</td>
                             <td class="numbers">{{ summary['avg_age'][i] }}</td>
                             <td class="rate">{{ "%.1f" | format(summary['high_risk_pct'][i]) }}%</td>
                             </tr>
