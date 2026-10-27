@@ -39,7 +39,7 @@ As a data engineer, I designed the project to bring together the main stages of 
 
 ![dash_overview](src/dash.png)
 
-- **Live Demo:** [Credit Analytics Dashboard]()
+- **Live Demo:** [Credit Analytics Dashboard](https://credit-analysis-app-4qbe.onrender.com/)
 - **Technologies:** DataWarehouse, Python, Flask, SQL, dbt, Snowflake, Machine Learning, JavaScript, ApexCharts, HTML, CSS
 - **Features:** Credit Risk Analysis, Applicants segmentation, Profiles visualization, and End-to-End Analytics
 
