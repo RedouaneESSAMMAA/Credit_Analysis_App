@@ -15,7 +15,7 @@ SELECT
     housing,
     number_credits,
     job,
-    people_liable,
+    dependents,
     telephone,
     foreign_worker,
     credit_risk

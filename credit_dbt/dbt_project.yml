@@ -17,8 +17,8 @@ snapshot-paths:
 models:
   credit_dbt:
     staging:
-      +schema: staging
+      +schema: STAGING
       +materialized: table
     analytics:
-      +schema: analytics
+      +schema: ANALYTICS
       +materialized: table

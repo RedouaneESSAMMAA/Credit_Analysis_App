@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw
-    database: CREDIT_DATA
+    database: Credit_Analysis
     schema: RAW
     tables:
       - name: raw_data

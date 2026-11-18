@@ -2,9 +2,19 @@ credit_dbt:
   target: dev
   outputs:
     dev:
-      type: snowflake
-      role: ACCOUNTADMIN
-      warehouse: COMPUTE_WH
-      database: CREDIT_DATA
-      schema: RAW
-      threads: 8
+      type: duckdb
+      path: "md:Credit_Analysis"
+      motherduck_token: "{{ env_var('MOTHERDUCK_TOKEN') }}"
+      threads: 4
+      attach:
+        - path: "md:Credit_Analysis"
+          alias: Credit_Analysis
+    prod:
+      type: duckdb
+      path: "md:Credit_Analysis"
+      motherduck_token: "{{ env_var('MOTHERDUCK_TOKEN') }}"
+      threads: 4
+      attach:
+        - path: "md:Credit_Analysis"
+          alias: Credit_Analysis
+    
